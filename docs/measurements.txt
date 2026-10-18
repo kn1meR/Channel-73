@@ -1,0 +1,144 @@
+
+[1] EQ filter designs vs analog prototype (max |error| dB, 20 Hz .. 16 kHz / .. 20 kHz)
+  fs=44100
+    high shelf +18 @12k    0.62 / 0.73 dB   (plain bilinear: 2.55 dB to 16k)
+    high shelf -18 @12k    0.62 / 0.73 dB   (plain bilinear: 2.55 dB to 16k)
+    high shelf +6 @12k     0.26 / 0.28 dB   (plain bilinear: 0.88 dB to 16k)
+    mid +18 @7.2k          0.35 / 0.35 dB   (plain bilinear: 1.70 dB to 16k)
+    mid -18 @7.2k          0.35 / 0.35 dB   (plain bilinear: 1.70 dB to 16k)
+    mid -18 @4.8k          0.23 / 0.23 dB   (plain bilinear: 0.86 dB to 16k)
+    mid +12 @360           0.01 / 0.01 dB   (plain bilinear: 0.01 dB to 16k)
+    low shelf +15 @35      0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low shelf -15 @220     0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low cut 2nd @300       0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    in-xfmr LP 56k         0.20 / 0.21 dB   (plain bilinear: 0.20 dB to 16k)
+  fs=48000
+    high shelf +18 @12k    0.51 / 0.71 dB   (plain bilinear: 1.99 dB to 16k)
+    high shelf -18 @12k    0.51 / 0.71 dB   (plain bilinear: 1.99 dB to 16k)
+    high shelf +6 @12k     0.24 / 0.27 dB   (plain bilinear: 0.69 dB to 16k)
+    mid +18 @7.2k          0.31 / 0.31 dB   (plain bilinear: 1.44 dB to 16k)
+    mid -18 @7.2k          0.31 / 0.31 dB   (plain bilinear: 1.44 dB to 16k)
+    mid -18 @4.8k          0.20 / 0.20 dB   (plain bilinear: 0.73 dB to 16k)
+    mid +12 @360           0.01 / 0.01 dB   (plain bilinear: 0.01 dB to 16k)
+    low shelf +15 @35      0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low shelf -15 @220     0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low cut 2nd @300       0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    in-xfmr LP 56k         0.21 / 0.24 dB   (plain bilinear: 0.21 dB to 16k)
+  fs=96000
+    high shelf +18 @12k    0.26 / 0.26 dB   (plain bilinear: 0.37 dB to 16k)
+    high shelf -18 @12k    0.26 / 0.26 dB   (plain bilinear: 0.37 dB to 16k)
+    high shelf +6 @12k     0.06 / 0.10 dB   (plain bilinear: 0.13 dB to 16k)
+    mid +18 @7.2k          0.36 / 0.36 dB   (plain bilinear: 0.36 dB to 16k)
+    mid -18 @7.2k          0.36 / 0.36 dB   (plain bilinear: 0.36 dB to 16k)
+    mid -18 @4.8k          0.18 / 0.18 dB   (plain bilinear: 0.18 dB to 16k)
+    mid +12 @360           0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low shelf +15 @35      0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low shelf -15 @220     0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    low cut 2nd @300       0.00 / 0.00 dB   (plain bilinear: 0.00 dB to 16k)
+    in-xfmr LP 56k         0.23 / 0.33 dB   (plain bilinear: 0.23 dB to 16k)
+
+[2] Full channel, low level (-40 dBFS), 48 kHz, 1x
+  Line 0, EQ out:  20Hz -0.22  50Hz -0.04  100Hz -0.01  1000Hz -0.00  10000Hz -0.00  20000Hz -0.09  
+  Line -20 gain @1k: +20.00 dB (expect +20)
+  Line +10 gain @1k: -10.00 dB (expect -10)
+  Mic -50, Z HI (1.2k) gain @1k: +50.00 dB (expect +50)
+  Mic -50 + pad: +30.00 dB (expect +30)
+  Mic -50, Z LO (300R): +53.52 dB (10468 parallel primaries: +6 dB step-up, less 150R loading)
+  Level -inf: -inf dB
+  Line OFF: -inf dB (mutes)
+  Output -12: -12.00 dB
+  EQ curves (EQL in):
+    freq (Hz)                     30    60   100   200   400  1000  3200  7200 12000 16000 20000
+    flat                        -0.1  -0.0  -0.0  -0.0  -0.0  -0.0  -0.0  -0.0  -0.0  -0.0  -0.1
+    high +16                    -0.1  -0.0  -0.1  -0.4  -1.2  -0.4   8.4  14.2  16.7  17.5  17.8
+    high -16                    -0.1   0.0   0.1   0.4   1.2   0.4  -8.4 -14.0 -16.2 -17.0 -17.4
+    mid 7.2k +18                -0.1  -0.0  -0.0   0.0   0.1   0.7   5.4  17.9   7.8   4.4   2.8
+    mid 1.6k -12                -0.1  -0.2  -0.5  -1.6  -4.4 -10.4  -8.8  -3.6  -1.6  -0.9  -0.7
+    mid 360 +10                  0.6   2.3   4.6   8.4   9.9   6.0   1.2   0.3   0.1   0.0  -0.1
+    low 60 +16                  15.9  16.1  12.6   6.0   0.5  -1.4  -0.2  -0.1  -0.0  -0.0  -0.1
+    low 220 -16                -16.6 -16.4 -16.2 -13.9  -7.9  -0.9   0.7   0.3   0.1   0.0  -0.1
+    low cut 300                -61.4 -43.5 -30.0 -10.6   1.5   0.2   0.0   0.0  -0.0  -0.0  -0.1
+    low cut 300 slope (75 -> 37.5 Hz): 18.1 dB/oct (expect ~18)
+
+[3] Harmonic signature, 1 kHz sine, 48 kHz, 2x  (0 dBu = -18 dBFS)
+  Line 0, -18 dBFS (0 dBu)           out  -18.0 dBFS  H2  -91.1  H3 -153.7  H4 -197.3  H5 -162.7 dBc  THD 0.003%
+  Line 0, -6 dBFS (+12 dBu)          out   -6.0 dBFS  H2  -79.1  H3 -148.6  H4 -141.2  H5 -145.8 dBc  THD 0.011%
+  Line 0, 0 dBFS (+18 dBu)           out   +0.0 dBFS  H2  -73.6  H3 -100.1  H4 -105.2  H5 -109.9 dBc  THD 0.021%
+  Line -20 (+20 dB), -18 dBFS in     out   +2.0 dBFS  H2  -72.9  H3  -87.6  H4  -93.2  H5  -97.9 dBc  THD 0.023%
+  Line -20, -10 dBFS in, Output -20  out  -10.1 dBFS  H2  -39.3  H3  -40.7  H4  -47.1  H5  -52.2 dBc  THD 1.510%
+  Line 0, Level +10, -12 dBFS in     out  -12.0 dBFS  H2  -77.7  H3 -113.5  H4 -118.2  H5 -122.8 dBc  THD 0.013%
+  Mic -50, -68 dBFS in (-50 dBu mic) out  -18.0 dBFS  H2  -91.1  H3 -160.6  H4 -195.0  H5 -174.3 dBc  THD 0.003%
+  Mic -80, -78 dBFS in (hot gain)    out   +2.0 dBFS  H2  -72.7  H3  -87.6  H4  -93.2  H5  -97.9 dBc  THD 0.024%
+  Line signal into Mic -30 (creative) out  -12.4 dBFS  H2  -29.6  H3  -31.3  H4  -39.4  H5  -45.4 dBc  THD 4.436%
+  Line -20, -14 dBFS, EQ flat (EQL out) out   +6.0 dBFS  H2  -68.2  H3  -63.6  H4  -69.4  H5  -74.1 dBc  THD 0.087%
+  Line -20, -14 dBFS, EQ boosted (EQL out) out   +6.0 dBFS  H2  -64.3  H3  -61.3  H4  -67.0  H5  -72.0 dBc  THD 0.117%
+
+[4] Aliasing: 7.013 kHz sine, heavy drive (Line -20, -6 dBFS), 48 kHz
+  1x: worst alias component -43.7 dBc
+  2x: worst alias component -115.6 dBc
+  4x: worst alias component -120.1 dBc
+
+[4b] Aliasing at normal drive: 7.013 kHz, Line 0, -6 dBFS (+12 dBu), 48 kHz
+  1x: worst alias component -120.1 dBc
+  2x: worst alias component -120.1 dBc
+  4x: worst alias component -120.1 dBc
+
+[5] Latency. Reported: 1x = 0, 2x = 3, 4x = 4 samples. Measured group delay of the whole channel (EQ out, low level)
+  fs  44100 1x: impulse peak at sample 0 | group delay 1 kHz 0.003 ms (0.15 smp), 5 kHz 0.003 ms, 15 kHz 0.010 ms
+  fs  44100 2x: impulse peak at sample 4 | group delay 1 kHz 0.073 ms (3.23 smp), 5 kHz 0.077 ms, 15 kHz 0.148 ms
+  fs  44100 4x: impulse peak at sample 5 | group delay 1 kHz 0.098 ms (4.34 smp), 5 kHz 0.102 ms, 15 kHz 0.177 ms
+  fs  48000 1x: impulse peak at sample 0 | group delay 1 kHz 0.003 ms (0.16 smp), 5 kHz 0.003 ms, 15 kHz 0.007 ms
+  fs  48000 2x: impulse peak at sample 4 | group delay 1 kHz 0.068 ms (3.27 smp), 5 kHz 0.071 ms, 15 kHz 0.120 ms
+  fs  48000 4x: impulse peak at sample 5 | group delay 1 kHz 0.091 ms (4.37 smp), 5 kHz 0.094 ms, 15 kHz 0.146 ms
+  fs  96000 1x: impulse peak at sample 1 | group delay 1 kHz 0.004 ms (0.40 smp), 5 kHz 0.003 ms, 15 kHz 0.004 ms
+  fs  96000 2x: impulse peak at sample 4 | group delay 1 kHz 0.039 ms (3.74 smp), 5 kHz 0.038 ms, 15 kHz 0.043 ms
+  fs  96000 4x: impulse peak at sample 5 | group delay 1 kHz 0.051 ms (4.93 smp), 5 kHz 0.051 ms, 15 kHz 0.056 ms
+
+[6] Stability fuzz: random parameters + block sizes (1..2048) at 44.1-192 kHz
+  2000 randomized blocks: all finite and bounded
+
+[7] Power OFF = bit-transparent after the fade
+  1x: output = input delayed by the reported 0 samples, max diff 0
+  2x: output = input delayed by the reported 3 samples, max diff 0
+  4x: output = input delayed by the reported 4 samples, max diff 0
+
+[9] Hardware datasheet conformance (1073 user manual issue 5.1)
+  response line 0           20 Hz -0.22 dB   20 kHz -0.20 dB   40 kHz -3.12 dB   (spec: +/-0.5, +/-0.5, -3)
+  response mic -50, Z 1.2k  20 Hz -0.22 dB   20 kHz -0.11 dB   40 kHz -2.87 dB   (spec: +/-0.5, +/-0.5, -3)
+  response mic -50, Z 300   20 Hz -0.22 dB   20 kHz -0.40 dB   40 kHz -3.63 dB   (spec: +/-0.5, +/-0.5, -3)
+  response mic -60, Z 600   20 Hz -0.22 dB   20 kHz -0.30 dB   40 kHz -3.37 dB   (spec: +/-0.5, +/-0.5, -3)
+  response line 0 @44.1k   20 Hz -0.22 dB   20 kHz -0.48 dB
+  THD @ +20 dBu out,    50 Hz:  line 0 0.0462 %   line -20 (+20 dB gain) 0.0309 %   (spec <= 0.07 %)
+  THD @ +20 dBu out,   100 Hz:  line 0 0.0238 %   line -20 (+20 dB gain) 0.0229 %   (spec <= 0.07 %)
+  THD @ +20 dBu out,  1000 Hz:  line 0 0.0231 %   line -20 (+20 dB gain) 0.0231 %   (spec <= 0.07 %)
+  THD @ +20 dBu out,  5000 Hz:  line 0 0.0231 %   line -20 (+20 dB gain) 0.0231 %   (spec <= 0.07 %)
+  THD @ +20 dBu out, 10000 Hz:  line 0 0.0231 %   line -20 (+20 dB gain) 0.0231 %   (spec <= 0.07 %)
+  THD @ +20 dBu out, 1 kHz, mic +60 dB: 0.0237 %
+  (info) THD @ +20 dBu out, 20 Hz, line 0: 0.259 %  (outside the 50 Hz-10 kHz spec band)
+  (info) THD @ +20 dBu out, 30 Hz, line 0: 0.119 %  (outside the 50 Hz-10 kHz spec band)
+  max output (1 % THD, 1 kHz): +27.2 dBu   (spec > +26 dBu)
+  EQ: HF @12k +16.0/-16.0 dB | LF35 @17.5 Hz +16.0/-16.0 dB | mid 1.6k +18.0/-18.0 dB
+  HPF  50 Hz position: -3 dB at  36.8 Hz, peak +0.34 dB, slope 16.1 dB/oct
+  HPF  80 Hz position: -3 dB at  61.2 Hz, peak +0.21 dB, slope 17.8 dB/oct
+  HPF 160 Hz position: -3 dB at 130.3 Hz, peak +0.98 dB, slope 18.5 dB/oct
+  HPF 300 Hz position: -3 dB at 261.5 Hz, peak +1.56 dB, slope 18.5 dB/oct
+
+[10] Schematic-derived structure (E/10006, EH10023)
+  mic gain, all 13 positions (Z HI): worst error 0.000 dB
+  Mic Z LO vs HI (150 R mic): +3.52 dB at -50, +4.44 dB at -60   (10468: LO = 6 dB more step-up)
+  +26 dBu out via line 0                 THD 0.399 %
+  +26 dBu out via mic -50 (attenuator)   THD 0.399 %
+  +26 dBu out via mic -80 (first amp)    THD 0.398 %
+
+[11] Circuit EQ: analog solution vs independent Python nodal model, and digital vs analog
+  BA205 HF full boost @12k 18.27 (ref 18.27) | LF60 full boost @35 Hz 21.27 (ref 21.27), @1k -1.23 (ref -1.23) | BA211 1.6k full boost 19.03 (ref 19.03)
+  fs  44100: worst digital-vs-circuit error 20 Hz-20 kHz, all settings: BA205 0.96 dB, BA211 0.64 dB, BA182 0.00 dB
+  fs  48000: worst digital-vs-circuit error 20 Hz-20 kHz, all settings: BA205 0.83 dB, BA211 0.59 dB, BA182 0.00 dB
+  fs  96000: worst digital-vs-circuit error 20 Hz-20 kHz, all settings: BA205 0.28 dB, BA211 0.21 dB, BA182 0.00 dB
+
+[8] CPU cost, stereo, 48 kHz, 256-sample blocks, EQ fully engaged (this machine)
+  1x: 1.76% of one core (10 s of audio in 176 ms)
+  2x: 3.55% of one core (10 s of audio in 355 ms)
+  4x: 6.99% of one core (10 s of audio in 699 ms)
+
+ALL CHECKS PASSED (0 failures)
