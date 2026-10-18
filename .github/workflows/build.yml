@@ -1,0 +1,48 @@
+name: Build VST3
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            name: Windows
+            configure: cmake -B build -DCMAKE_BUILD_TYPE=Release
+          - os: macos-latest
+            name: macOS
+            configure: cmake -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64"
+          - os: ubuntu-latest
+            name: Linux
+            configure: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build libasound2-dev libx11-dev libxrandr-dev libxinerama-dev \
+            libxcursor-dev libxcomposite-dev libxext-dev libfreetype-dev libfontconfig1-dev libgl1-mesa-dev
+
+      - name: Configure
+        run: ${{ matrix.configure }}
+
+      - name: Build
+        run: cmake --build build --config Release --target Channel73_VST3 c73_dsp_tests --parallel
+
+      - name: DSP measurement suite
+        shell: bash
+        run: |
+          if [ -f build/Release/c73_dsp_tests.exe ]; then build/Release/c73_dsp_tests.exe; else build/c73_dsp_tests; fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Channel73-VST3-${{ matrix.name }}
+          path: build/Channel73_artefacts/Release/VST3/
